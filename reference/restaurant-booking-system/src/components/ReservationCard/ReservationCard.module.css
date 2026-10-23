@@ -1,0 +1,65 @@
+.card {
+  padding: 1rem;
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.name {
+  font-weight: 600;
+  color: var(--color-gray-900);
+}
+
+.contact {
+  font-size: 0.875rem;
+  color: var(--color-gray-600);
+  overflow-wrap: anywhere;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-gray-600);
+}
+
+.key {
+  font-weight: 500;
+}
+
+.requests {
+  margin-bottom: 0.75rem;
+}
+
+.requestsLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-gray-700);
+}
+
+.requestsText {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--color-gray-600);
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .details {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

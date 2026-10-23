@@ -1,0 +1,40 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.iconBox {
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  line-height: 0;
+}
+
+.blue {
+  background: var(--color-blue-100);
+  color: var(--color-blue-600);
+}
+.green {
+  background: var(--color-green-100);
+  color: var(--color-green-600);
+}
+.yellow {
+  background: var(--color-yellow-100);
+  color: var(--color-yellow-600);
+}
+.purple {
+  background: var(--color-purple-100);
+  color: var(--color-purple-600);
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-gray-600);
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
+}
