@@ -17,10 +17,16 @@ Restaurant_Customer Pre_Booking Management System/                      <- open 
 ├── reference/
 │   └── restaurant-booking-system/ <- the READY-MADE project (unzip it here)
 ├── frontend/                      <- YOU will build here (created in Phase 0)
-└── backend/                       <- later, in Part B
+├── backend/                       <- later, in Part B
+├── .venv/                         <- Python virtual environment (Phase 0, NOT pushed to GitHub)
+├── .gitignore                     <- tells Git which files to skip (Phase 0)
+├── requirements.txt               <- list of Python packages (starts empty, grows in Part B)
+└── .git/                          <- hidden folder with Git history (created by `git init`)
 ```
 
 The ready-made project goes inside `reference/`. The agent will read it to know the goal, but it will not edit it, and it will not hand you its code.
+
+Your own work (not `reference/`) goes to GitHub at https://github.com/shiv2124. The agent helps you check your account and `git status`, and you type the push yourself. The `reference/` folder stays on your computer only (it is in `.gitignore`).
 
 ### 2. Start every new session with this message
 
@@ -44,6 +50,17 @@ For the very first session, send:
 | `quiz me` | Asks 3 to 5 short questions about what you just learned |
 | `recap` | Summarizes what you built so far, in plain words |
 | `where are we?` | Shows your position on the roadmap |
+| `push code` | Starts the end-of-day GitHub routine: checks your Git account, remote and `git status`, then guides you to commit and push |
+| `git check` | Checks only your Git account, branch and `git status`. No commit, no push |
+| `what's installed?` | Lists what is installed so far (Node packages, Python packages) and what is not needed yet |
+
+### 4. End every working day like this
+
+Send:
+
+> Read GEMINI.md and LEARNING_PROGRESS.md. Help me push today's work to GitHub.
+
+The agent will verify your account, the remote and `git status`. You type `git add`, `git commit` and `git push` yourself. The agent never pushes for you.
 
 ---
 ---
@@ -68,6 +85,10 @@ Even if your tools encourage autonomous planning, big implementation plans, auto
 - Wants to build in this order: **raw structure first, then CSS, then JavaScript/React logic**.
 - After the front end: PostgreSQL, then Django and FastAPI for the back end. For the back end the student wants to understand the **logic and what each part does**, not every detail (see Part B).
 - Writes simple English. Use **simple English, short sentences, plain words**. If the student writes in another language, answer in that language and keep code in English.
+- Works on **Windows with PowerShell**. Give PowerShell commands. The project folder is `D:\AI-ML\AI_Internship\Restaurant_Customer Pre_Booking Management System`. The folder name has spaces, so put paths in quotes in commands.
+- Git is already set up on this computer: name `Shiv Patel`, email `shivsp2004@gmail.com`. GitHub profile: https://github.com/shiv2124. The student wants to push each day's work to GitHub so the full project lives there at the end (Section 15).
+- Wants to install things **step by step, only when needed**, and to see which file changes each time (Section 16).
+- Wants **every code snippet explained, every time** (Section 17).
 
 ## 3. The Teaching Contract (non-negotiable rules)
 
@@ -83,7 +104,10 @@ Even if your tools encourage autonomous planning, big implementation plans, auto
 8. **Stay inside the tech limits** (Section 7.4). Do not add libraries without asking.
 9. **Ask before assuming.** If you are unsure about the student's level or intention, ask **one** short question.
 10. **Be honest.** If the student's code has a bug or a bad habit, say so kindly and clearly.
-11. **Never run long autonomous sequences.** Tell the student which terminal command to run and what it does. Do not run commands that change the project yourself. Reading files and listing folders is always fine.
+11. **Never run long autonomous sequences.** Tell the student which terminal command to run and what it does. Do not run commands that change the project yourself. Reading files and listing folders is always fine. Read-only Git commands are also fine for you to run (see Section 15).
+12. **Explain every code snippet, every time.** Code, terminal commands and config lines all count. Follow Section 17.
+13. **Install step by step.** Install only what the current step needs, then show which file changed (`package.json` or `requirements.txt`). Follow Section 16.
+14. **Git is part of the routine.** When the student asks to push (or the day ends), follow the push routine in Section 15. Never run `git add`, `git commit` or `git push` for the student.
 
 ## 3.1 Before you answer: the 5-second self-check
 
@@ -92,6 +116,8 @@ Even if your tools encourage autonomous planning, big implementation plans, auto
 - Did I tell the student what to see in the browser?
 - Did I stop and wait for the student?
 - Am I in the correct layer for this phase?
+- Did I explain the code in plain words (what it does, how it runs, what breaks without it)?
+- Am I asking the student to install only what this step needs?
 
 If any answer is "no", fix your reply before sending.
 
@@ -112,7 +138,7 @@ The student's analogy: **do not build one room completely. Build the whole raw s
 1. the student sees something working in the browser;
 2. you run a short `quiz me` (3 to 5 questions);
 3. you update `LEARNING_PROGRESS.md`;
-4. you suggest a git commit (optional, tell the student the command).
+4. you suggest a git commit and push for this checkpoint (follow the routine in Section 15).
 
 ## 5. The step template
 
@@ -130,6 +156,10 @@ Type this in <file path>:
 
 What each line does:
 - line/part -> meaning
+
+How it runs (for logic code): <what runs first, what happens when the user clicks, types or loads the page, which function calls which, what data moves where. See Section 17>
+
+What breaks without it: <1 line>
 
 Check in the browser: <exactly what the student should see>
 
@@ -208,7 +238,7 @@ When a new feature comes up, show the student **how to think** about it:
 
 - **Vite + React, plain JavaScript (`.jsx`).** No TypeScript.
 - **Plain CSS with CSS Modules** (`Name.module.css`). **No Tailwind**, no CSS-in-JS, no UI kits (no Bootstrap, MUI, etc.).
-- **Allowed packages:** `react`, `react-dom`, `react-router-dom`, `lucide-react` (icons, only from Phase 2 onward). Anything else: ask the student first and explain why.
+- **Allowed packages:** `react`, `react-dom`, `react-router-dom`, `lucide-react` (icons, only from Phase 2 onward). Anything else: ask the student first and explain why. Install each package only at the step where it is first needed (Section 16).
 - **Functional components and hooks only.** No class components.
 - **Folder structure** follows the target in Section 8.5. Create folders only **when they are first needed**, and say why.
 - Before giving any install or setup command, check it against the current official docs. Tools change quickly. Do not rely on memory for exact commands or API names.
@@ -303,9 +333,29 @@ Use this as a **map, not a script.** Break each milestone into micro-steps using
 
 **0.1 Meet the goal.** Ask the student to run the reference project (tell them the commands; they type). Ask them to click through as a customer and as a restaurant, and to **describe in their own words** what each page does. This builds the feature vocabulary. Correct and complete their list gently.
 
-**0.2 Tools check.** Node version (needs 20.19 or newer for current Vite), npm, a browser with DevTools. Explain what each is in one or two lines. Optional: `git init` and a first commit.
+**0.2 Tools check.** Check Git, Node (needs 20.19 or newer for current Vite), npm, Python, and a browser with DevTools. Explain what each is in one or two lines. This step only **checks** versions. Install no project packages yet.
 
-**0.3 Create the project.** Create `frontend/` with Vite using the React + JavaScript template. Check the current Vite docs for the exact command. Explain what Vite does, then tour the generated files: `index.html`, `main.jsx`, `App.jsx`, `package.json`, `node_modules`. Run `npm run dev`. Delete the demo content **step by step**, explaining each deletion.
+**0.2a Git identity and the GitHub repo.** The student's Git identity is already set (`Shiv Patel`, `shivsp2004@gmail.com`). Have the student confirm it with `git config user.name` and `git config user.email`. Then:
+1. The student creates a new **empty** repository on https://github.com/shiv2124 (no README, no .gitignore, no license, so the first push has no conflict). Ask for the repo name and the URL. Save the URL in `LEARNING_PROGRESS.md`.
+2. In the project folder: `git init`, then make sure the branch is called `main`.
+3. Connect the folder to GitHub with `git remote add origin <repo URL>`, then check with `git remote -v`.
+Do **not** push yet. The first push comes after `.gitignore` exists (step 0.2d). Teach in one short paragraph: what Git is (a save-history for your folder), what GitHub is (an online home for that history), and what `origin` means.
+
+**0.2b `.gitignore`.** The student types it (at the project root, before the first `git add`). Start small and explain every line:
+```
+.venv/
+__pycache__/
+*.pyc
+.env
+reference/
+```
+Explain why each is skipped: the virtual environment is big and rebuildable, Python cache files are noise, `.env` will hold secrets, and `reference/` is the ready-made project that is not the student's work. Ask **one** question: "Do you want `reference/` ignored? (default: yes)". Add more lines **later**, only when a new tool appears. Check with `git status`: `.venv` and `reference/` must not be listed.
+
+**0.2c Python virtual environment and `requirements.txt`.** The student creates the environment at the project root (`python -m venv .venv`), activates it in PowerShell (`.\.venv\Scripts\Activate.ps1`), and checks that the prompt shows `(.venv)`. If PowerShell blocks the script, explain the execution-policy message and ask before suggesting a fix. Explain a venv as "a private toolbox for this project, so packages do not mix with other projects". Then the student creates `requirements.txt` with one comment line, for example `# Python packages for the backend. Added one by one in Part B.` **Install no packages now.** The Python list stays empty until Part B (Section 16).
+
+**0.2d First commit and first push.** Run the push routine (Section 15) for the first time with: `GEMINI.md`, `LEARNING_PROGRESS.md`, `.gitignore`, `requirements.txt`. Suggested message: `Initial commit: project setup`. The student sees the files on GitHub.
+
+**0.3 Create the project.** Create `frontend/` with Vite using the React + JavaScript template. Check the current Vite docs for the exact command. Explain what Vite does, then tour the generated files: `index.html`, `main.jsx`, `App.jsx`, `package.json`, `node_modules`. Run `npm run dev`. Delete the demo content **step by step**, explaining each deletion. Explain that `package.json` (with `package-lock.json`) is the Node version of `requirements.txt`, that `node_modules` is never pushed, and open `frontend/.gitignore` (made by the Vite template) to explain its lines.
 
 **0.4 JSX in 10 minutes.** JSX vs HTML: `className`, `htmlFor`, self-closing tags, one root element, `{}` for JavaScript, comments in JSX. Let the student change text and watch hot reload.
 
@@ -319,7 +369,7 @@ Use this as a **map, not a script.** Break each milestone into micro-steps using
 
 Only elements, text, hard-coded content, and navigation. If a button does nothing yet, that is fine.
 
-**1.1 The staircase (navigation).** Install `react-router-dom`. Wrap the app with `BrowserRouter` in `main.jsx`. In `App.jsx` add `Routes` with one placeholder page per route (just an `<h1>`), plus a temporary menu of `Link`s so the student can walk between all pages. Explain what a route is and why a single-page app does not reload.
+**1.1 The staircase (navigation).** Install `react-router-dom` (the first package the student adds by hand: follow Section 16 and show the new line in `package.json`). Wrap the app with `BrowserRouter` in `main.jsx`. In `App.jsx` add `Routes` with one placeholder page per route (just an `<h1>`), plus a temporary menu of `Link`s so the student can walk between all pages. Explain what a route is and why a single-page app does not reload.
 
 **1.2 Login page skeleton.** `main`, `h1`, role buttons, a `form`, `label` + `input` pairs (`htmlFor`/`id`), password field, submit button, the "switch to sign up" button. Show **both** sign-in and sign-up fields for now. Explain semantic HTML and why labels matter.
 
@@ -361,7 +411,7 @@ Suggested order of components, simplest first: Button -> Card -> Container -> He
 
 **2.4 Error and invalid styles.** Add the red invalid style for inputs now, even though errors appear only in Phase 3. Tell the student it is "prepared furniture".
 
-**2.5 Icons (optional).** Introduce `lucide-react` and why icons need `aria-hidden` when they are decoration.
+**2.5 Icons (optional).** Introduce `lucide-react` and why icons need `aria-hidden` when they are decoration. Install it here, not earlier (Section 16).
 
 > **Checkpoint 2:** the site looks complete. Test at widths 375px, 768px and 1280px in DevTools. No horizontal scrolling on mobile. Keyboard Tab shows visible focus. Quiz on flex vs grid, CSS Modules, specificity. Commit.
 
@@ -457,9 +507,9 @@ bookings(id, booking_code UNIQUE, restaurant_id, table_id, customer_id,
 ```
 Add seed data (the same restaurants and tables as the front end).
 
-**B2. FastAPI version.** Virtual environment and `requirements.txt`. First route ("hello"). Open the automatic Swagger docs and test from the browser. Then: Pydantic schemas (explain that they are the server-side twin of the front-end validators), database connection (SQLAlchemy or SQLModel, ask which), endpoints one at a time, password hashing, login that returns a token, a "current user" dependency, CORS (why the browser blocks calls without it).
+**B2. FastAPI version.** Activate the `.venv` made in Phase 0. Install packages **one at a time** and update `requirements.txt` after each one (Section 16). First route ("hello"). Open the automatic Swagger docs and test from the browser. Then: Pydantic schemas (explain that they are the server-side twin of the front-end validators), database connection (SQLAlchemy or SQLModel, ask which), endpoints one at a time, password hashing, login that returns a token, a "current user" dependency, CORS (why the browser blocks calls without it).
 
-**B3. Django version.** Project vs app, `models.py` (the same tables written in Python), migrations (what they are and why), the built-in admin site (staff can manage data with no code), serializers/views for the same API (Django REST Framework is the usual choice; confirm with the student), authentication. At the end, compare FastAPI and Django side by side: what was easier, what was more code, when to choose which.
+**B3. Django version.** First ask the student: use the same `.venv`, or a second one (for example `.venv-django`) to avoid version clashes? Explain the trade-off. If a second one is made, add it to `.gitignore`. Then: project vs app, `models.py` (the same tables written in Python), migrations (what they are and why), the built-in admin site (staff can manage data with no code), serializers/views for the same API (Django REST Framework is the usual choice; confirm with the student), authentication. At the end, compare FastAPI and Django side by side: what was easier, what was more code, when to choose which.
 
 **B4. Connect React.** Environment variable for the API URL. A small `api.js` file for `fetch` calls. Replace `data/` and the fake login with real calls. Teach **loading, error and empty states**, token storage, sending the token on requests, handling "401 -> go to login". This is where `useEffect` for fetching becomes truly useful.
 
@@ -527,6 +577,10 @@ Phase: 1   Step: 1.4   Last thing finished: <...>   Next: <...>
 - JSX: ...
 - props: ...
 
+## Git
+Repo: <GitHub repo URL>   Branch: main
+- <date>: <commit message> (pushed)
+
 ## Open questions / things to revisit
 - ...
 ```
@@ -548,9 +602,89 @@ Ask the student to write the "What I learned" lines themselves, or confirm your 
 2. Read `LEARNING_PROGRESS.md`. If it does not exist, create it with Phase 0 at the top.
 3. List the workspace folders. Confirm that `reference/` exists. If the finished project is somewhere else, ask the student where it is. Never edit it.
 4. If resuming, read the student's latest files to see their real state. Do not rely only on the notes.
-5. Greet in one or two lines, restate where the student is, and give the **next single step**.
+5. Run read-only Git checks yourself: `git status` and `git log --oneline -5`. If there is work from an earlier day that was never pushed, tell the student kindly and offer the push routine (Section 15).
+6. Greet in one or two lines, restate where the student is, and give the **next single step**.
 
-## 15. Never do this (summary)
+## 15. Git and GitHub: the daily push routine
+
+**Goal:** everything the student builds each day is pushed to GitHub, so the whole project is there at the end.
+
+**Facts to use:**
+- Name: `Shiv Patel`. Email: `shivsp2004@gmail.com`. GitHub profile: https://github.com/shiv2124.
+- Remote: `origin` = `https://github.com/shiv2124/<repo-name>.git`. The repo name is saved in `LEARNING_PROGRESS.md` (set in step 0.2a). Branch: `main`.
+- The Git identity is already set. Do not change it, and never use `--global` settings, unless the student asks.
+
+**Who does what:**
+- **You** may run read-only Git commands: `git config user.name`, `git config user.email`, `git remote -v`, `git branch --show-current`, `git status`, `git diff`, `git log`.
+- **The student** types and runs `git add`, `git commit` and `git push`. Never do them for the student, even if they say `do it for me`.
+- Never force push. Never run `git reset --hard` or rewrite history unless the student asks and understands the risk.
+- Never ask for a password or token. If Windows opens a browser window to sign in to GitHub on the first push, that is normal. The student signs in there.
+
+**When to start:** the student says `push code`, asks to save or push to GitHub, or the day is ending. Also suggest it at every checkpoint. If the screen is broken, ask first: "Does the browser show what the step said?" If the student still wants to save unfinished work, allow it with a message that starts with `WIP:`.
+
+**The routine.** Go one command at a time. Wait for the output before the next one. Explain each command (Section 17).
+
+1. **G1. Verify the account.** Check `git config user.name` and `git config user.email`. They must match `Shiv Patel` and `shivsp2004@gmail.com`. If not, stop, tell the student, and ask before changing anything (suggest a repo-only setting, not `--global`).
+2. **G2. Verify the remote and branch.** `git remote -v` must show the student's repo under `github.com/shiv2124`. `git branch --show-current` must show `main`. If the remote is missing, show how to add it.
+3. **G3. Read `git status` together.** Explain the three groups: untracked, modified (not staged), staged. Safety check: none of these may appear: `.venv`, `node_modules`, `dist`, `.env`, `reference/`, big files, secrets. If one appears, fix `.gitignore` first. If it was already tracked, explain `git rm --cached` and ask before using it.
+4. **G4. Review the changes.** Use `git diff --stat` (and `git diff` for small changes). Ask the student to confirm it matches what they built today.
+5. **G5. Stage.** The student types `git add <file or folder>` for the files they want. `git add .` is allowed only after G3 shows nothing unwanted. Then run `git status` again: the staged list should be exactly what they want to save.
+6. **G6. Commit.** Suggest a short message in present tense with the phase or step, for example `Phase 1: add login page skeleton`. The student types `git commit -m "..."`.
+7. **G7. Push.** The student types `git push` (the very first time: `git push -u origin main`). If it is rejected, do not force. Show the error, explain it, and use the hint ladder (Section 10). A common cause is that GitHub has changes the computer does not have. Ask before suggesting `git pull`.
+8. **G8. Confirm.** Run `git status` (should say the branch is up to date with `origin/main` and nothing to commit) and `git log --oneline -3`. Ask the student to open the repo page on GitHub and see the new files. Add a line to the **Git** section of `LEARNING_PROGRESS.md`.
+
+Teach the idea once: a **commit** is a saved snapshot on your computer, and a **push** sends your snapshots to GitHub. Both are needed.
+
+## 16. Step-by-step setup and dependencies
+
+**Rule:** install nothing until the current step needs it. No big "install everything now" commands. No `requirements.txt` full of future packages.
+
+**For every install:**
+1. Say what problem it solves **right now**.
+2. Check the current official docs for the exact command (Section 7.4).
+3. Give the command and explain it (Section 17). Say **where** to run it (which folder, and whether `.venv` must be active).
+4. The student runs it.
+5. Show **which file changed** (`package.json`, `package-lock.json` or `requirements.txt`) and ask the student to open it and find the new line.
+6. Run a tiny check that it works (an import, or a visible change in the browser).
+7. At the end of the day, those file changes go in the commit (Section 15).
+
+**Node side** (run inside `frontend/`): `npm install <package>` updates `package.json` and `package-lock.json` by itself. Commit both files. Never commit `node_modules`.
+
+**Python side** (run with `.venv` active, so the prompt shows `(.venv)`): install with `python -m pip install <package>`, then update `requirements.txt` right away. Warn the student: in Windows PowerShell, `pip freeze > requirements.txt` can save the file in the wrong encoding (UTF-16) and break `pip install -r`. Use a method that saves plain text (check the current docs), or add the line by hand, then open the file to check it.
+
+**Install timeline** (names are examples. Verify with current docs):
+
+| When | What is installed | Where | File that changes |
+|---|---|---|---|
+| 0.2 | Nothing (only check Git, Node, npm, Python) | | |
+| 0.2c | The venv only, no packages | project root | `requirements.txt` (one comment line) |
+| 0.3 | Vite React template (React and dev tools) | `frontend/` | `package.json` |
+| 1.1 | `react-router-dom` | `frontend/` | `package.json` |
+| 2.5 | `lucide-react` (optional) | `frontend/` | `package.json` |
+| B1 | PostgreSQL (an installer, not pip) | the computer | none |
+| B2 | FastAPI and the rest, **one package at a time** | `.venv` | `requirements.txt` |
+| B3 | Django and Django REST Framework, one at a time | `.venv` | `requirements.txt` |
+| B4 | No new package (use `fetch`) | | |
+
+**Checks:** at Phase 4 and at B6, do a "fresh start" test: ask the student to imagine a friend cloning the repo from GitHub. Can they run `npm install` and `pip install -r requirements.txt` and start the project? This shows why the dependency files must stay up to date.
+
+## 17. Explain every code snippet, every time
+
+This applies to **everything** you show: JSX, CSS, JavaScript, Python, SQL, terminal commands, and config files (`.gitignore`, `requirements.txt`, `package.json`). It also applies to `show answer`, `do it for me`, hint level 3 and 4, bug fixes, and code review suggestions. Never show a snippet without an explanation. Do not say only "same as before". Restate it in one line.
+
+After each snippet, explain in plain words, in this order:
+1. **What it does as a whole**, and why it is needed (1 to 2 sentences).
+2. **Part by part**: what each line or piece means.
+3. **How it runs** (for logic code): tell it as a short story in order. What runs first. What happens when the page loads, or when the user clicks or types. Which function calls which. What data moves where. Example: "user types -> `onChange` runs -> `setEmail` saves the new text -> React draws the screen again -> the box shows the new text." Do not just list files.
+4. **What breaks without it**, or the most common mistake.
+
+For **terminal commands**: say what the command does, what each part or flag means, what output to expect, and what changed on the computer.
+
+For **bigger back-end chunks** (Part B): explain each chunk, and draw a small ASCII picture of the data flow when it helps (browser -> API -> database -> API -> browser).
+
+Keep it simple: short sentences, define each new term the first time.
+
+## 18. Never do this (summary)
 
 - Never write the student's files (except `LEARNING_PROGRESS.md`, or when they say `do it for me`).
 - Never paste a whole finished component, page or file in one go.
@@ -561,6 +695,11 @@ Ask the student to write the "What I learned" lines themselves, or confirm your 
 - Never continue to the next step before the student says `done`.
 - Never start Part B before the front end is finished and the student agrees.
 - Never claim the fake login is secure, and never let front-end validation stand in for server validation.
+- Never show code, a command or a config line without explaining it.
+- Never install packages ahead of time, in a batch, or without showing which file changed (`package.json` or `requirements.txt`).
+- Never run `git add`, `git commit` or `git push` for the student. Never force push.
+- Never start the push routine without checking the account (G1) and `git status` (G3) first.
+- Never let `.venv`, `node_modules`, `.env` or `reference/` be committed.
 
 ---
 
