@@ -1,0 +1,72 @@
+export const initialRestaurants = [
+  {
+    id: 1,
+    name: "Spice Garden",
+    cuisine: "indian",
+    location: "downtown",
+    address: "123 Main Street, Downtown",
+    rating: 4.8,
+    reviewsCount: 124,
+    priceRange: "fine",
+    openTime: "11:00 AM - 10:30 PM",
+    phone: "+91 98765 43210",
+    image: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "Authentic regional Indian curries, clay-oven tandoori, and aromatic biryanis in a warm, welcoming ambience."
+  },
+  {
+    id: 2,
+    name: "Pasta Bella",
+    cuisine: "italian",
+    location: "uptown",
+    address: "45 Olive Way, Uptown",
+    rating: 4.6,
+    reviewsCount: 98,
+    priceRange: "moderate",
+    openTime: "12:00 PM - 11:00 PM",
+    phone: "+91 98765 43211",
+    image: "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "Handcrafted pasta, wood-fired artisan pizzas, and rich Italian desserts made with imported olive oils and cheeses."
+  },
+  {
+    id: 3,
+    name: "Dragon Wok",
+    cuisine: "chinese",
+    location: "downtown",
+    address: "88 Market Road, Downtown",
+    rating: 4.5,
+    reviewsCount: 110,
+    priceRange: "budget",
+    openTime: "11:30 AM - 10:00 PM",
+    phone: "+91 98765 43212",
+    image: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "Sizzling stir-fries, fresh dim sum baskets, and authentic spicy Sichuan specialties prepared by master wok chefs."
+  },
+  {
+    id: 4,
+    name: "Taco Fiesta",
+    cuisine: "mexican",
+    location: "suburb",
+    address: "12 Sun Boulevard, Suburb",
+    rating: 4.7,
+    reviewsCount: 85,
+    priceRange: "budget",
+    openTime: "12:00 PM - 10:30 PM",
+    phone: "+91 98765 43213",
+    image: "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "Zesty street tacos, loaded nachos, sizzling fajita skillets, and house-made guacamole in a vibrant fiesta setting."
+  },
+  {
+    id: 5,
+    name: "Tokyo Table",
+    cuisine: "japanese",
+    location: "uptown",
+    address: "7 Blossom Lane, Uptown",
+    rating: 4.9,
+    reviewsCount: 142,
+    priceRange: "fine",
+    openTime: "01:00 PM - 11:30 PM",
+    phone: "+91 98765 43214",
+    image: "https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "Fresh artisanal sushi rolls, steaming tonkotsu ramen bowls, and traditional robata grilled skewers."
+  }
+]
